@@ -123,7 +123,7 @@ export default function ReportsPage() {
                   <tr key={d}>
                     <th scope="row" className="pr-1 text-right font-medium text-foreground-muted">{WEEKDAYS[d]}</th>
                     {row.map((c, h) => (
-                      <td key={h} title={`${WEEKDAYS[d]} ${h}:00 — ${c.bills} fiş, ${money(c.revenue)}`} className="h-5 rounded-[4px]" style={{ background: c.bills ? `color-mix(in srgb, var(--brand) ${Math.max(14, Math.round((c.bills / maxHeat) * 100))}%, transparent)` : "var(--surface-muted)" }}>
+                      <td key={h} title={`${WEEKDAYS[d]} ${h}:00 — ${c.bills} fiş, ${money(c.revenue)}`} className="h-5 rounded-[4px]" style={{ background: c.bills ? `color-mix(in srgb, #2563eb ${Math.max(16, Math.round((c.bills / maxHeat) * 100))}%, transparent)` : "var(--surface-muted)" }}>
                         <span className="sr-only">{c.bills} fiş</span>
                       </td>
                     ))}

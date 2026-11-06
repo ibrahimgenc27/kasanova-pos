@@ -78,7 +78,7 @@ export default function DashboardPage() {
               <div className="flex h-40 items-end gap-1.5 sm:gap-2" role="img" aria-label={`Son ${trend.length} günün günlük cirosu; bugün ${money(today?.revenue ?? 0)}`}>
                 {trend.map((t, i) => (
                   <div key={t.date} className="group flex h-full flex-1 flex-col items-center justify-end gap-1.5" title={`${new Date(t.date).toLocaleDateString("tr-TR")} — ${money(t.revenue)} · ${t.count} fiş`}>
-                    <div className="bar-grow w-full max-w-[28px] rounded-full" style={{ height: `${Math.max(6, (t.revenue / maxRev) * 100)}%`, background: i === trend.length - 1 ? "var(--brand)" : "color-mix(in srgb, var(--brand) 22%, var(--surface-muted))", "--i": i } as React.CSSProperties} />
+                    <div className="bar-grow w-full max-w-[26px] rounded-md" style={{ height: `${Math.max(6, (t.revenue / maxRev) * 100)}%`, background: i === trend.length - 1 ? "#2563eb" : "#cbd5e1", "--i": i } as React.CSSProperties} />
                     <span className="text-[10px] text-foreground-muted">{new Date(t.date).toLocaleDateString("tr-TR", { weekday: "narrow" })}</span>
                   </div>
                 ))}
@@ -91,8 +91,8 @@ export default function DashboardPage() {
         <div className="col-span-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
           <section className="rise card-surface flex items-center gap-4 p-5" style={{ "--i": 5 } as React.CSSProperties}>
             <svg viewBox="0 0 100 100" className="h-24 w-24 shrink-0 -rotate-90" role="img" aria-label={`Bugün günlük ortalamanızın %${ringPct}'inde`}>
-              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--surface-muted)" strokeWidth="9" />
-              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--brand)" strokeWidth="9" strokeLinecap="round" strokeDasharray={LEN} strokeDashoffset={LEN * (1 - ringPct / 100)} className="ring-arc" style={{ "--len": LEN } as React.CSSProperties} />
+              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--surface-muted)" strokeWidth="8" />
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#2563eb" strokeWidth="8" strokeLinecap="round" strokeDasharray={LEN} strokeDashoffset={LEN * (1 - ringPct / 100)} className="ring-arc" style={{ "--len": LEN } as React.CSSProperties} />
             </svg>
             <div>
               <p className="num-xl">{ringPct}%</p>
@@ -117,7 +117,7 @@ export default function DashboardPage() {
 
 function Kpi({ i, span, icon: Icon, label, value, sub, accent, tone }: { i: number; span: string; icon: React.ElementType; label: string; value: string; sub?: React.ReactNode; accent?: boolean; tone?: "warn" | "bad" }) {
   return (
-    <div className={`rise ${span} rounded-2xl border p-5 ${accent ? "border-transparent bg-[var(--green-900)] text-white" : "card-surface"}`} style={{ "--i": i } as React.CSSProperties}>
+    <div className={`rise ${span} rounded-xl border p-5 ${accent ? "border-slate-800 bg-slate-900 text-white shadow-sm" : "card-surface"}`} style={{ "--i": i } as React.CSSProperties}>
       <div className="flex items-center gap-2">
         <Icon className={`h-4 w-4 ${accent ? "text-white/80" : tone === "bad" ? "text-danger" : tone === "warn" ? "text-warning" : "text-brand"}`} aria-hidden="true" />
         <p className={`text-xs font-medium ${accent ? "text-white/75" : "text-foreground-muted"}`}>{label}</p>

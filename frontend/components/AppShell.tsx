@@ -156,13 +156,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           navOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="flex items-center gap-2.5 border-b border-border-subtle px-5 py-5">
-          <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft">
-            <Image src="/logo.png" alt="" width={22} height={22} className="h-[22px] w-[22px] rounded-md" aria-hidden="true" />
-          </span>
-          <span className="truncate font-semibold tracking-tight text-foreground">{shop?.shopName || "KasaNova POS"}</span>
+        <div className="flex items-center gap-2.5 border-b border-border px-5 py-4">
+          <Image src="/logo.png" alt="" width={28} height={28} className="h-7 w-7 shrink-0 rounded-lg" aria-hidden="true" />
+          <span className="truncate text-[15px] font-semibold tracking-tight text-foreground">{shop?.shopName || "KasaNova POS"}</span>
         </div>
-        <nav className="flex-1 space-y-1 px-3 py-4">
+        <nav className="flex-1 space-y-0.5 px-3 py-3">
           {visibleItems.map((item) => {
             const active = pathname.startsWith(item.href);
             const Icon = item.icon;
@@ -172,9 +170,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 href={item.href}
                 onClick={() => setNavOpen(false)}
                 className={clsx(
-                  "relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-150",
+                  "relative flex items-center gap-3 rounded-lg px-3 py-2 text-[13.5px] font-medium transition-colors duration-150",
                   active
-                    ? "bg-brand text-brand-foreground shadow-sm"
+                    ? "bg-brand text-brand-foreground shadow-xs"
                     : "text-foreground-muted hover:bg-surface-muted hover:text-foreground"
                 )}
               >
