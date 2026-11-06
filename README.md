@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="docs/logo.png" alt="NodeDR POS TR Logo" width="150" />
+<img src="docs/logo.png" alt="KasaNova POS Logo" width="150" />
 
-# 🛒 NodeDR POS TR — Hızlı Satış (POS) & Stok Yönetim Sistemi
+# ⚡ KasaNova POS — Yeni Nesil Hızlı Satış & Stok Yönetim Sistemi
 
-**Perakende mağazalar, marketler, elektronikçiler ve işletmeler için %100 Türkçe, çevrimdışı çalışabilen (Offline-First), açık kaynaklı satış noktası ve ön muhasebe sistemi.**
+**Perakende mağazalar, marketler, elektronikçiler ve işletmeler için %100 Türkçe, çevrimdışı çalışabilen (Offline-First) satış noktası (POS), veresiye ve ön muhasebe sistemi.**
 
 [![Dil: %100 Türkçe](https://img.shields.io/badge/Dil-%25100%20T%C3%BCrk%C3%A7e-E30A17?style=for-the-badge&logo=googletranslate&logoColor=white)](#)
 [![Çevrimdışı Çalışma](https://img.shields.io/badge/%C3%87evrimd%C4%B1%C5%9F%C4%B1-Offline%20First-10B981?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
@@ -12,7 +12,6 @@
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white)](frontend/package.json)
 [![Node.js 24](https://img.shields.io/badge/Node.js-24-339933?style=for-the-badge&logo=node.js&logoColor=white)](backend/package.json)
 [![SQLite + Prisma](https://img.shields.io/badge/Veritaban%C4%B1-SQLite%20%2B%20Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](backend/prisma)
-[![Lisans: AGPL-3.0](https://img.shields.io/badge/Lisans-AGPL%20v3-6366F1?style=for-the-badge)](LICENSE)
 
 <br />
 
@@ -21,19 +20,19 @@
 [📸 Ekran Görüntüleri](#-ekran-görüntüleri-ve-kullanım-rehberi) •
 [🏗️ Mimari](#️-sistem-mimarisi) •
 [🖨️ Donanım & Yazıcı](#️-donanım-ve-yazıcı-desteği) •
-[🛠️ Geliştirici Kurulumu](#️-yerel-geliştirme-docker-olmadan)
+[🛠️ Geliştirici Kurulumu](#️-yerel-geliştirme-docker-olmadan--nodejs-ile)
 
 <br />
 
-<img src="docs/assets/hero-animated.svg" alt="NodeDR POS TR Animasyonlu Önizleme" width="100%" />
+<img src="docs/assets/hero-animated.svg" alt="KasaNova POS Animasyonlu Önizleme" width="100%" />
 
 </div>
 
 ---
 
-## 🌟 Neden NodeDR POS TR?
+## 🌟 Neden KasaNova POS?
 
-**NodeDR POS TR**, küçük ve orta ölçekli işletmelerin aylık abonelik ücretlerine veya internet bağlantısına bağımlı kalmadan kendi bilgisayarlarında ya da sunucularında çalıştırabileceği modern bir **Hızlı Satış (POS), Stok, Veresiye ve Fatura Yönetim** platformudur.
+**KasaNova POS**, küçük ve orta ölçekli işletmelerin aylık abonelik ücretlerine veya internet bağlantısına bağımlı kalmadan kendi bilgisayarlarında ya da sunucularında çalıştırabileceği modern bir **Hızlı Satış (POS), Stok, Veresiye ve Fatura Yönetim** platformudur.
 
 > [!TIP]
 > **İnternet Kesilse Bile Kasalarınız Durmaz!**
@@ -100,10 +99,10 @@
 ## 🚀 Hızlı Kurulum
 
 <div align="center">
-  <img src="docs/assets/install-animated.svg" alt="NodeDR POS TR Terminal Kurulumu" width="100%" />
+  <img src="docs/assets/install-animated.svg" alt="KasaNova POS Terminal Kurulumu" width="100%" />
 </div>
 
-NodeDR POS TR mağazanızdaki **tek bir bilgisayara** kurulur. Aynı Wi-Fi / yerel ağdaki tüm telefon, tablet ve diğer bilgisayarlar ekstra kurulum gerektirmeden tarayıcıdan **`http://<bilgisayar-ip>:1994`** adresine girerek sistemi kullanabilir.
+KasaNova POS mağazanızdaki **tek bir bilgisayara** kurulur. Aynı Wi-Fi / yerel ağdaki tüm telefon, tablet ve diğer bilgisayarlar ekstra kurulum gerektirmeden tarayıcıdan **`http://<bilgisayar-ip>:1994`** adresine girerek sistemi kullanabilir.
 
 ### 🐳 Seçenek 1: Docker Compose ile Kurulum (Önerilen)
 
@@ -111,8 +110,8 @@ Bilgisayarınızda [Docker](https://www.docker.com/) yüklüyse aşağıdaki 3 k
 
 ```bash
 # 1. Projeyi klonlayın
-git clone https://github.com/ibrahimgenc27/nodedr-pos-tr.git
-cd nodedr-pos-tr
+git clone https://github.com/ibrahimgenc27/kasanova-pos.git
+cd kasanova-pos
 
 # 2. Ortam değişkenleri dosyasını oluşturun
 cp .env.example .env
@@ -214,7 +213,7 @@ flowchart LR
         TAB["📱 Kasiyer Tableti /\nMüşteri Ekranı"]
     end
 
-    subgraph Server["🐳 NodeDR POS TR Sunucusu"]
+    subgraph Server["🐳 KasaNova POS Sunucusu"]
         FE["⚡ Frontend (:1994)\nNext.js 16 + React 19"]
         BE["🔒 Backend (:4000 İç Ağ)\nExpress 5 + Prisma ORM"]
         DB[("🗄️ SQLite Veritabanı\n(Kalıcı Veri Alanı)")]
@@ -262,7 +261,7 @@ flowchart LR
 ## 📁 Proje Dizin Yapısı
 
 ```text
-nodedr-pos-tr/
+kasanova-pos/
 ├── backend/                  # Express 5 API, Prisma şeması ve PDF/Fiş motoru
 │   ├── prisma/               # SQLite veritabanı şeması ve migrasyonlar
 │   └── src/
@@ -275,15 +274,6 @@ nodedr-pos-tr/
 ├── docs/                     # Dokümantasyon, ekran görüntüleri ve animasyonlu SVG'ler
 └── docker-compose.yml        # Tek komutla tam kurulum yapılandırması
 ```
-
----
-
-## 📄 Lisans ve Katkıda Bulunma
-
-Bu proje **GNU Affero General Public License v3.0 (AGPL-3.0)** altında lisanslanmıştır. Detaylar için [`LICENSE`](LICENSE) dosyasına göz atabilirsiniz.
-
-- Orijinal Proje Mimarı: [Raktim Ranjit (NodeDR)](https://github.com/Raktim94/nodedr-pos)
-- Türkiye Yerelleştirmesi & Geliştirme: [@ibrahimgenc27](https://github.com/ibrahimgenc27)
 
 <div align="center">
   <br />

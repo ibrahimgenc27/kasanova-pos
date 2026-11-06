@@ -118,7 +118,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <header className="flex items-center justify-between border-b border-border-subtle bg-surface px-4 py-3 lg:hidden">
         <div className="flex items-center gap-2">
           <Image src="/logo.png" alt="" width={28} height={28} className="h-7 w-7 shrink-0 rounded-full" aria-hidden="true" />
-          <span className="truncate font-semibold text-foreground">{shop?.shopName || "nodedr-pos"}</span>
+          <span className="truncate font-semibold text-foreground">{shop?.shopName || "KasaNova POS"}</span>
         </div>
         <div className="flex items-center gap-1">
           <button
@@ -160,7 +160,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft">
             <Image src="/logo.png" alt="" width={22} height={22} className="h-[22px] w-[22px] rounded-md" aria-hidden="true" />
           </span>
-          <span className="truncate font-semibold tracking-tight text-foreground">{shop?.shopName || "nodedr-pos"}</span>
+          <span className="truncate font-semibold tracking-tight text-foreground">{shop?.shopName || "KasaNova POS"}</span>
         </div>
         <nav className="flex-1 space-y-1 px-3 py-4">
           {visibleItems.map((item) => {
@@ -223,7 +223,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               me?.role === "admin" && "hover:bg-surface-muted"
             )}
           >
-            <span className="truncate">{shop?.shopName || "nodedr-pos"}</span>
+            <span className="truncate">{shop?.shopName || "KasaNova POS"}</span>
             {me?.role === "admin" && <ChevronDown className="h-3.5 w-3.5 text-foreground-muted" aria-hidden="true" />}
           </Link>
 

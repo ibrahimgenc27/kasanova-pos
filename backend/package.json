@@ -1,13 +1,12 @@
 {
-  "name": "nodedr-pos-backend",
+  "name": "kasanova-pos-backend",
   "version": "1.6.1",
   "private": true,
-  "description": "Offline POS backend: API, SQLite via Prisma, receipt PDF/print generation",
-  "author": "Raktim Ranjit <mail@raktimranjit.com> (https://github.com/Raktim94)",
-  "license": "AGPL-3.0-only",
+  "description": "KasaNova POS backend: API, SQLite via Prisma, receipt PDF/print generation",
+  "author": "ibrahimgenc27 (https://github.com/ibrahimgenc27)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Raktim94/nodedr-pos.git"
+    "url": "https://github.com/ibrahimgenc27/kasanova-pos.git"
   },
   "main": "src/server.js",
   "type": "commonjs",

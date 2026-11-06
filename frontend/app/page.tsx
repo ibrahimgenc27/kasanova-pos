@@ -6,7 +6,7 @@ import {
   Receipt,
   ScanBarcode,
   Users,
-  GitFork,
+  Sparkles,
   ChevronDown,
 } from "lucide-react";
 import { BrandFooter } from "@/components/BrandFooter";
@@ -14,9 +14,9 @@ import { HomeAuthRedirect } from "@/components/HomeAuthRedirect";
 import { QuickstartCommand } from "@/components/QuickstartCommand";
 import { ReceiptHero } from "@/components/ReceiptHero";
 
-const title = "Ücretsiz POS Yazılımı – Çevrimdışı, Açık Kaynak, Abonelik Yok";
+const title = "KasaNova POS – Çevrimdışı Hızlı Satış ve Stok Yönetim Sistemi";
 const description =
-  "nodedr-pos, küçük perakende mağazaları için ücretsiz, açık kaynaklı satış noktası yazılımıdır. Tamamen çevrimdışı çalışır, kendi bilgisayarınızda barındırılır, abonelik veya satış başına ücret yoktur, Türkiye için KDV destekli faturalama sunar.";
+  "KasaNova POS, perakende mağazaları ve işletmeler için geliştirilmiş çevrimdışı çalışan hızlı satış noktası (POS), veresiye ve stok yönetim yazılımıdır. Kendi bilgisayarınızda barındırılır, abonelik ücreti yoktur ve KDV destekli faturalama sunar.";
 
 export const metadata: Metadata = {
   title,
@@ -26,69 +26,69 @@ export const metadata: Metadata = {
   twitter: { title, description },
 };
 
-const GITHUB_URL = "https://github.com/Raktim94/nodedr-pos";
+const GITHUB_URL = "https://github.com/ibrahimgenc27/kasanova-pos";
 
 const FEATURES = [
   {
     icon: WifiOff,
     title: "Tamamen çevrimdışı çalışır",
-    body: "Satış, stok ve fiş yazdırma, Docker veya CasaOS aracılığıyla kendi makinenizde çalışır — satış yapmak için internet bağlantısı gerekmez.",
+    body: "Satış, stok ve fiş yazdırma kendi makinenizde çalışır — satış yapmak için internet bağlantısı gerekmez.",
   },
   {
     icon: Lock,
     title: "Kendi sunucunuzda, verileriniz sizde",
-    body: "Bulut hesabı yok, senkronize edilecek bir şey yok. Satış ve müşteri verileri, kontrolünüzdeki donanımda yerel bir veritabanında yaşar.",
+    body: "Bulut hesabı yok, dış sunucuya aktarım yok. Satış ve müşteri verileri kontrolünüzdeki donanımda yerel veritabanında saklanır.",
   },
   {
     icon: Receipt,
     title: "Türkiye için KDV destekli faturalama",
-    body: "KDV dahil fiyatlandırma, ürün bazında GTİP kodları ve her yazdırılan veya PDF fişte KDV dökümü.",
+    body: "KDV dahil fiyatlandırma, ürün bazında vergi oranları ve her yazdırılan termal fişte veya A4 PDF faturada KDV dökümü.",
   },
   {
     icon: ScanBarcode,
     title: "Barkod okuma & etiket yazdırma",
-    body: "USB barkod okuyucu ile oku ve sat, ayrıca henüz barkodu olmayan ürünler için etiket yazdırmak üzere yerleşik barkod oluşturucu.",
+    body: "USB barkod okuyucu veya kamera ile oku ve sat; ayrıca barkodu olmayan ürünler için yerleşik EAN-13 barkod ve etiket üretici.",
   },
   {
     icon: Users,
-    title: "Müşteriler, borçlar & sadakat",
-    body: "Müşteri borçlarını, mağaza kredisini ve puan bazlı sadakat programını üçüncü taraf bir CRM aboneliği olmadan takip edin.",
+    title: "Müşteriler, veresiye & sadakat",
+    body: "Müşteri açık hesap (veresiye) bakiyelerini, mağaza kredisini ve puan bazlı sadakat programını ek ücret olmadan takip edin.",
   },
   {
-    icon: GitFork,
-    title: "Açık kaynak, AGPL-3.0 lisanslı",
-    body: "Tam kaynak kodu GitHub'da herkese açıktır. Fiyatlandırma, kimlik doğrulama ve fişlerin nasıl çalıştığını denetleyin — kapalı kaynak satıcı bağımlılığı yok.",
+    icon: Sparkles,
+    title: "Modern, hızlı ve esnek mimari",
+    body: "Aynı Wi-Fi ağındaki telefon, tablet ve bilgisayarlardan anında erişin; müşteri ekranı ve e-ticaret sipariş panosuyla tam entegre çalışın.",
   },
 ];
 
 const COMPARISON_ROWS: [string, string, string][] = [
-  ["Aylık abonelik", "Yok — sonsuza dek ücretsiz", "Yaygın, terminal/konum başına"],
-  ["İnternetsiz çalışır mı?", "Evet, tamamen çevrimdışı", "Genellikle canlı bağlantı gerektirir"],
-  ["Verileriniz nerede?", "Kendi makinenizde", "Satıcının bulut sunucularında"],
-  ["Kaynak kodu", "Açık kaynak (AGPL-3.0), denetlenebilir", "Kapalı kaynak"],
-  ["KDV dahil Türkiye fiyatlandırması", "Varsayılan olarak dahil", "Değişir, genellikle eklenti"],
+  ["Aylık abonelik", "Yok — tamamen ücretsiz", "Yaygın, terminal/konum başına"],
+  ["İnternetsiz çalışır mı?", "Evet, %100 çevrimdışı", "Genellikle canlı bağlantı gerektirir"],
+  ["Verileriniz nerede?", "Kendi bilgisayarınızda", "Üçüncü taraf bulut sunucularında"],
+  ["Kurulum & Kontrol", "Tam kontrol, kendi sunucunuzda", "Satıcı bağımlı"],
+  ["KDV dahil Türkiye fiyatlandırması", "Varsayılan olarak dahil", "Değişir, genellikle ücretli eklenti"],
 ];
 
 const FAQS = [
   {
-    q: "nodedr-pos gerçekten ücretsiz mi, abonelik veya gizli ücret yok mu?",
-    a: "Evet. AGPL-3.0 lisanslı ve açık kaynaklıdır — abonelik, işlem başına ücret veya ücretli katman yoktur. Zaten sahip olduğunuz donanımda veya düşük maliyetli bir VPS'te kendiniz barındırırsınız, böylece süregelen bir yazılım maliyeti yoktur.",
+    q: "KasaNova POS gerçekten aboneliksiz mi?",
+    a: "Evet. Abonelik, işlem başına komisyon veya gizli ücret yoktur. Kendi bilgisayarınızda veya sunucunuzda çalıştırırsınız.",
   },
   {
-    q: "Bu ücretsiz POS yazılımı internetsiz çalışır mı?",
-    a: "Evet. nodedr-pos kurulduktan sonra tamamen çevrimdışı çalışır. Uygulama ve veritabanı Docker Compose veya CasaOS aracılığıyla yerel olarak çalışır, böylece kasa ve fiş yazdırma internet bağlantısı olmadan da çalışmaya devam eder.",
+    q: "İnternet kesildiğinde satış yapmaya devam edebilir miyim?",
+    a: "Evet. KasaNova POS kurulduktan sonra tamamen çevrimdışı (offline) çalışır. Kasa, stok düşümü ve fiş yazdırma işlemleri internet olmadan kesintisiz devam eder.",
   },
   {
-    q: "Açık kaynaklı POS yazılımı satış ve müşteri verilerini işlemek için güvenli mi?",
-    a: "Verileriniz, siz başka bir yerde barındırmayı seçmedikçe, asla tesisinizden ayrılmaz. Kod açık kaynaklı olduğu için, kapalı kaynaklı bir bulut satıcısına güvenmek yerine şifreleri, fiyatlandırmayı ve müşteri kayıtlarını nasıl işlediğini siz (veya herkes) denetleyebilirsiniz.",
+    q: "Satış ve müşteri verilerim güvende mi?",
+    a: "Verileriniz sizin seçtiğiniz cihaz dışına çıkmaz. Tüm veritabanı kendi bilgisayarınızda yerel olarak tutulur.",
   },
   {
-    q: "nodedr-pos Türk perakendeciler için KDV faturalamasını destekliyor mu?",
-    a: "Evet. Fiyatlandırma varsayılan olarak KDV dahildir, ürün bazında GTİP kodları ve her fişte KDV dökümü gösterilir.",
+    q: "KasaNova POS KDV ve termal fiş yazdırmayı destekliyor mu?",
+    a: "Evet. Ürün bazlı KDV oranları, 80mm ESC/POS termal fiş yazıcıları ve imzalı/kaşeli A4 PDF fatura çıktıları tam olarak desteklenir.",
   },
   {
-    q: "Bu ücretsiz POS sistemini çalıştırmak için neye ihtiyacım var?",
-    a: "Docker Compose çalıştırabilen herhangi bir makine (Windows, Linux, Mac), bir CasaOS/ZimaOS kutusu veya macOS uygulaması. USB barkod okuyucu ve ESC/POS termal yazıcı desteklenir ancak isteğe bağlıdır.",
+    q: "Çalıştırmak için hangi donanımlara ihtiyacım var?",
+    a: "Windows, Linux veya macOS çalışan herhangi bir bilgisayar yeterlidir. USB barkod okuyucu ve termal fiş yazıcıları tak-çalıştır olarak desteklenir.",
   },
 ];
 
@@ -114,11 +114,11 @@ export default function HomePage() {
         <section className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-14">
           <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
             <h1 className="max-w-xl text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Tamamen çevrimdışı çalışan ücretsiz POS yazılımı
+              Tamamen çevrimdışı çalışan yeni nesil POS yazılımı
             </h1>
             <p className="max-w-lg text-balance text-base text-foreground/70 sm:text-lg">
-              nodedr-pos, küçük perakende mağazaları için açık kaynaklı satış noktası ve stok yazılımıdır.
-              Kendi makinenizde barındırılır, abonelik yok, satış başına ücret yok ve satış yapmak için
+              KasaNova POS, perakende mağazaları ve işletmeler için hızlı satış noktası ve stok yönetim sistemidir.
+              Kendi bilgisayarınızda barındırılır, abonelik ücreti yoktur ve satış yapmak için
               internet bağlantısı gerekmez.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
@@ -126,7 +126,7 @@ export default function HomePage() {
                 href="/onboarding"
                 className="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground shadow-sm transition-all hover:-translate-y-px hover:opacity-90 hover:shadow-lg hover:shadow-brand/20"
               >
-                Başlayın — ücretsiz
+                Hemen Başlayın
               </Link>
               <Link
                 href="/login"
@@ -135,15 +135,6 @@ export default function HomePage() {
                 Giriş yap
               </Link>
             </div>
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-foreground/60 underline-offset-2 hover:text-foreground hover:underline"
-            >
-              <GitFork className="h-3.5 w-3.5" aria-hidden="true" />
-              Kaynak kodu GitHub&apos;da görüntüle
-            </a>
           </div>
           <div className="flex w-full justify-center lg:w-auto lg:justify-end">
             <ReceiptHero />
@@ -152,7 +143,7 @@ export default function HomePage() {
 
         <section aria-labelledby="features-heading" className="flex flex-col gap-6">
           <h2 id="features-heading" className="text-xl font-semibold text-foreground">
-            Küçük mağazalar neden tercih ediyor?
+            İşletmeler neden KasaNova POS tercih ediyor?
           </h2>
           <div className="grid grid-cols-1 gap-x-8 divide-y divide-border rounded-xl border border-border sm:grid-cols-2 sm:divide-y-0">
             {FEATURES.map(({ icon: Icon, title: t, body }, i) => (
@@ -172,14 +163,14 @@ export default function HomePage() {
 
         <section aria-labelledby="compare-heading" className="flex flex-col gap-6">
           <h2 id="compare-heading" className="text-xl font-semibold text-foreground">
-            nodedr-pos ve tipik bulut POS yazılımı karşılaştırması
+            KasaNova POS ve tipik bulut POS yazılımı karşılaştırması
           </h2>
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full min-w-[480px] border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b-2 border-border">
                   <th className="px-4 py-3 font-semibold text-foreground/70">&nbsp;</th>
-                  <th className="px-4 py-3 font-semibold text-foreground">nodedr-pos</th>
+                  <th className="px-4 py-3 font-semibold text-foreground">KasaNova POS</th>
                   <th className="px-4 py-3 font-semibold text-foreground/70">Tipik bulut POS</th>
                 </tr>
               </thead>
@@ -217,22 +208,21 @@ export default function HomePage() {
         </section>
 
         <section className="flex flex-col items-center gap-4 rounded-xl border border-border bg-surface-muted px-6 py-10 pb-8 text-center">
-          <h2 className="text-2xl font-semibold text-foreground">Ücretsiz başlayın</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Hemen kurun ve başlayın</h2>
           <p className="max-w-xl text-sm text-foreground/70">
             İşletim sisteminizi seçin ve tek bir komut çalıştırın — Docker&apos;ı kontrol eder, eksikse
-            kurar, ardından nodedr-pos&apos;u kurar ve başlatır. Kayıt yok, kredi kartı yok, deneme
-            süresi yok.
+            kurar, ardından KasaNova POS&apos;u kurar ve başlatır.
           </p>
           <QuickstartCommand />
           <p className="max-w-xl text-xs text-foreground/60">
-            CasaOS/ZimaOS kutunuz varsa uygulama mağazasından kurun. Veya{" "}
+            Kaynak koduna göz atmak için{" "}
             <a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 hover:text-foreground"
             >
-              tam kaynak kodunu GitHub&apos;da görüntüleyin
+              GitHub sayfasını ziyaret edin
             </a>
             .
           </p>

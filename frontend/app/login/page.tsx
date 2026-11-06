@@ -42,8 +42,8 @@ export default function LoginPage() {
     <main className="flex min-h-screen flex-1 flex-col items-center justify-center gap-6 bg-background px-4 py-10">
       <Card className="w-full max-w-sm p-8">
         <div className="mb-6 flex flex-col items-center gap-3 text-center">
-          <Image src="/logo.png" alt="nodedr-pos" width={64} height={64} className="h-16 w-16 rounded-full" priority />
-          <h1 className="text-xl font-semibold text-foreground">nodedr-pos&apos;a Giriş Yap</h1>
+          <Image src="/logo.png" alt="KasaNova POS" width={64} height={64} className="h-16 w-16 rounded-full" priority />
+          <h1 className="text-xl font-semibold text-foreground">KasaNova POS&apos;a Giriş Yap</h1>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
           <Field

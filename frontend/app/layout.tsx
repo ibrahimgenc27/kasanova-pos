@@ -16,25 +16,25 @@ const geistMono = Geist_Mono({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:1994";
 const description =
-  "NodeDR POS, küçük perakende mağazaları için ücretsiz, açık kaynaklı, çevrimdışı çalışan Satış Noktası ve stok yönetim sistemidir. Abonelik yok, internet gerekmez.";
+  "KasaNova POS, perakende mağazaları ve işletmeler için çevrimdışı çalışan hızlı satış (POS), veresiye ve stok yönetim sistemidir.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "NodeDR POS | Çevrimdışı Satış Noktası & Stok Yönetimi",
-    template: "%s | NodeDR POS",
+    default: "KasaNova POS | Hızlı Satış Noktası & Stok Yönetimi",
+    template: "%s | KasaNova POS",
   },
   description,
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
-    siteName: "NodeDR POS",
-    title: "NodeDR POS | Çevrimdışı Satış Noktası & Stok Yönetimi",
+    siteName: "KasaNova POS",
+    title: "KasaNova POS | Hızlı Satış Noktası & Stok Yönetimi",
     description,
   },
   twitter: {
     card: "summary",
-    title: "NodeDR POS | Çevrimdışı Satış Noktası & Stok Yönetimi",
+    title: "KasaNova POS | Hızlı Satış Noktası & Stok Yönetimi",
     description,
   },
 };
@@ -42,11 +42,11 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "NodeDR POS",
+  name: "KasaNova POS",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Windows, Linux, Docker",
   description,
-  url: "https://github.com/Raktim94/nodedr-pos",
+  url: "https://github.com/ibrahimgenc27/kasanova-pos",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -54,8 +54,8 @@ const structuredData = {
   },
   publisher: {
     "@type": "Organization",
-    name: "Nodedr Infotech Private Limited",
-    url: "https://www.nodedr.com",
+    name: "KasaNova POS",
+    url: "https://github.com/ibrahimgenc27/kasanova-pos",
   },
 };
 

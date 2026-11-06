@@ -9,7 +9,7 @@ export function ReceiptHero() {
   return (
     <div className="receipt-print-in w-full max-w-[280px] shrink-0">
       <div className="receipt-card mb-3 rounded-sm px-5 pb-6 pt-5 font-mono text-[13px] shadow-2xl shadow-black/40">
-        <p className="text-center text-sm font-bold tracking-[0.15em]">NODEDR POS</p>
+        <p className="text-center text-sm font-bold tracking-[0.15em]">KASANOVA POS</p>
         <p className="mt-0.5 text-center text-[11px]" style={{ color: "var(--receipt-ink-muted)" }}>
           Fiş No. 0001 &middot; Süre SINIRSIZ
         </p>
