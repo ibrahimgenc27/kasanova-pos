@@ -1,0 +1,97 @@
+"use client";
+
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Download, FileUp } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Bits";
+import { api, ApiError } from "@/lib/api";
+
+interface RowResult { row: number; name: string; outcome: "COMMITTED" | "VALID" | "ERROR" | "DUPLICATE"; message: string }
+interface Report { dryRun: boolean; total: number; committed: number; valid: number; errors: number; duplicates: number; results: RowResult[] }
+
+const COLUMNS = "name*, selling_price*, barcode, sku, category, hsn, unit, purchase_price, tax_rate, stock, reorder_point, discount_type, discount_value, track_serial, warranty_months, supplier";
+
+export function BulkImportPanel({ onClose }: { onClose: () => void }) {
+  const qc = useQueryClient();
+  const [file, setFile] = useState<File | null>(null);
+  const [report, setReport] = useState<Report | null>(null);
+  const [busy, setBusy] = useState<"preview" | "import" | null>(null);
+  const [error, setError] = useState("");
+
+  async function run(dryRun: boolean) {
+    if (!file) return;
+    const ext = file.name.toLowerCase().split(".").pop();
+    if (ext !== "csv" && ext !== "xlsx") return setError("Lütfen bir .csv veya .xlsx Excel dosyası seçiniz.");
+    setError("");
+    setBusy(dryRun ? "preview" : "import");
+    try {
+      const r = await api.uploadRaw<Report>(`/products/import?format=${ext}${dryRun ? "&dry_run=1" : ""}`, file);
+      setReport(r);
+      if (!dryRun) qc.invalidateQueries({ queryKey: ["products"] });
+    } catch (e) {
+      setError(e instanceof ApiError ? e.message : "Dosya işlenemedi.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  return (
+    <section className="card-surface rise p-5" aria-label="Toplu içe aktarma">
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <h2 className="text-base font-semibold">Excel / CSV ile Toplu Ürün İçe Aktarma</h2>
+        <Button variant="ghost" onClick={onClose}>Gizle</Button>
+      </div>
+      <p className="mb-3 text-sm text-foreground-muted">
+        İlk satır başlık olmalıdır. Gerekli alanlar: <code className="break-words text-xs">{COLUMNS}</code>. Barkod alanını boş bırakırsanız otomatik EAN-13 üretilir.{" "}
+        <a href="/api/products/import/sample.csv" download className="inline-flex items-center gap-1 font-medium text-brand underline-offset-2 hover:underline">
+          <Download className="h-3.5 w-3.5" aria-hidden="true" />
+          Örnek CSV Şablonunu İndir
+        </a>
+      </p>
+      <div className="flex flex-wrap items-center gap-2">
+        <input type="file" accept=".csv,.xlsx" aria-label="Ürünler dosyası" className="text-sm" onChange={(e) => { setFile(e.target.files?.[0] ?? null); setReport(null); setError(""); }} />
+        <Button variant="secondary" disabled={!file || busy !== null} onClick={() => run(true)}>{busy === "preview" ? "Kontrol Ediliyor…" : "Önizle / Kontrol Et"}</Button>
+        {report?.dryRun && report.valid > 0 && (
+          <Button disabled={busy !== null} onClick={() => run(false)}><FileUp className="h-4 w-4" aria-hidden="true" />{busy === "import" ? "İçe Aktarılıyor…" : `${report.valid} Ürünü İçe Aktar`}</Button>
+        )}
+      </div>
+      {error && <p role="alert" className="mt-3 rounded-lg bg-danger-soft px-3 py-2 text-sm text-danger">{error}</p>}
+      {report && (
+        <div className="mt-4">
+          <p className="text-sm" role="status">
+            {report.dryRun ? "Önizleme: " : "İçe Aktarıldı: "}<b>{report.committed}</b> eklendi, <b>{report.valid}</b> hazır, <b>{report.duplicates}</b> mükerrer (atlandı), <b>{report.errors}</b> hatalı — toplam {report.total} satır.
+          </p>
+          {report.results.some((r) => r.outcome !== "VALID" || r.message) && (
+            <div className="mt-2 max-h-72 overflow-auto rounded-xl border border-border">
+              <table className="w-full min-w-[420px] text-left text-sm">
+                <thead className="sticky top-0 bg-surface-muted text-xs text-foreground-muted">
+                  <tr>
+                    <th className="p-2">Satır</th>
+                    <th className="p-2">Ürün Adı</th>
+                    <th className="p-2">Durum</th>
+                    <th className="p-2">Açıklama</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {report.results.filter((r) => r.outcome !== "VALID" || r.message).map((r) => (
+                    <tr key={r.row}>
+                      <td className="tabular p-2">{r.row}</td>
+                      <td className="max-w-[180px] truncate p-2">{r.name || "—"}</td>
+                      <td className="p-2">
+                        <Badge tone={r.outcome === "ERROR" ? "bad" : r.outcome === "DUPLICATE" ? "warn" : "good"}>
+                          {r.outcome === "COMMITTED" ? "Eklendi" : r.outcome === "VALID" ? "Geçerli" : r.outcome === "DUPLICATE" ? "Mükerrer" : "Hata"}
+                        </Badge>
+                      </td>
+                      <td className="p-2 text-foreground-muted">{r.message || "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
